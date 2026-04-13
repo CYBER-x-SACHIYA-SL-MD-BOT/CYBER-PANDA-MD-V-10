@@ -155,7 +155,7 @@ async function helpCommand(sock, chatId, message) {
 ╚════════════════╝`;
 
     try {
-        const imagePath = path.join(__dirname, '../assets/menu_video.mp4');
+        const imagePath = path.join(__dirname, '../assets/bot_image.jpg');
         
         if (fs.existsSync(imagePath)) {
             const imageBuffer = fs.readFileSync(imagePath);
