@@ -3,7 +3,7 @@ const settings = {
   author: '‎CYBER-PANDA-MD',
   botName: "CYBER-PANDA-MD",
   botOwner: 'Sachith', // Your name
-  ownerNumber: '94717233347', //Set your number here without + symbol, just add country code & number without any space
+  ownerNumber: '+94702782946', //Set your number here without + symbol, just add country code & number without any space
   giphyApiKey: 'qnl7ssQChTdPjsKta2Ax2LMaGXz303tq',
   commandMode: "public",
   maxStoreMessages: 20, 
