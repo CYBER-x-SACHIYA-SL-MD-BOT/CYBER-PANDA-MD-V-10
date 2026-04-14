@@ -181,7 +181,7 @@ async function tiktokCommand(sock, chatId, message) {
                         }
                     }
                     
-                    const caption = title ? `𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗖𝗬𝗕𝗘𝗥 𝗣𝗔𝗡𝗗𝗔 𝗠𝗗"\n\n📝 Title: ${title}` : "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗖𝗬𝗕𝗘𝗥 𝗣𝗔𝗡𝗗𝗔 𝗠𝗗"";
+                    const caption = title ? `𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗖𝗬𝗕𝗘𝗥 𝗣𝗔𝗡𝗗𝗔 𝗠𝗗"\n\n📝 Title: ${title}` : "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗖𝗬𝗕𝗘𝗥 𝗣𝗔𝗡𝗗𝗔 𝗠𝗗";
                     
                     await sock.sendMessage(chatId, {
                         video: videoBuffer,
@@ -216,7 +216,7 @@ async function tiktokCommand(sock, chatId, message) {
                     console.error(`Failed to download video: ${downloadError.message}`);
                     // Fallback to URL method
                     try {
-                        const caption = title ? `𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗖𝗬𝗕𝗘𝗥 𝗣𝗔𝗡𝗗𝗔 𝗠𝗗"\n\n📝 Title: ${title}` : "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗖𝗬𝗕𝗘𝗥 𝗣𝗔𝗡𝗗𝗔 𝗠𝗗"";
+                        const caption = title ? `𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗖𝗬𝗕𝗘𝗥 𝗣𝗔𝗡𝗗𝗔 𝗠𝗗"\n\n📝 Title: ${title}` : "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗖𝗬𝗕𝗘𝗥 𝗣𝗔𝗡𝗗𝗔 𝗠𝗗";
                         
                         await sock.sendMessage(chatId, {
                             video: { url: videoUrl },

@@ -4,155 +4,102 @@ const path = require('path');
 
 async function helpCommand(sock, chatId, message) {
     const helpMessage = `
-╭━〔 🐼 CYBER PANDA MD V10 🐼
-┃
-┃ 👤 User        : @${userName}
-┃ 🤖 Bot Name    : ${settings.botName || 'CYBER-PANDA-MD'}
-┃ 🧠 Version     : ${stats.version || settings.version || '1.0.0'}
-┃ 👑 Owner       : ${settings.botOwner || 'CYBER-PANDA-MD'}
-┃ 📺 YouTube     : ${global.ytch}
-┃ 📞 Owner No    : 0760220052
-┃ 📥 Prefix      : ${prefix}
-┃ 🌍 TimeZone    : ${settings.timezone}
-┃ ⏰ Time        : ${greeting.time}
-┃ ${dayInfo.emoji} Day         : ${dayInfo.day}
-┃ 💻 Mode        : ${currentBotMode}
-┃ 📊 Commands    : ${totalCommands}
-┃ 📅 Date        : ${getLocalizedTime()}
-┃ 📡 Platform    : ${userPlatform}
-┃ 👥 Active Now  : ${stats.activeUsers}
-┃ 📈 Total Users : ${stats.totalUsers}
-┃
-╰━━━━━━━━━━━━━━━━━━
+╔═══════════════════╗
+╠ *🐼 𝘾𝙔𝘽𝙀𝙍 𝙋𝘼𝙉𝘿𝘼 𝙈𝘿 𝙑.10 🐼*
+╚═══════════════════╝
+╔═══════════════════╗
+╠ 💗 *${settings.botName}*
+╚═══════════════════╝
+╔═══════════════════╗
+╠ 💫 *𝐕𝐞𝐫𝐬𝐢𝐨𝐧: V.10*
+╚═══════════════════╝
+╔═══════════════════╗
+╠ 🦾 *by ${settings.botOwner}*
+╚═══════════════════╝
+╔═══════════════════╗
+╠ *🐼 𝐒𝐀𝐂𝐇𝐈𝐓𝐇 𝐂𝐇𝐀𝐍𝐃𝐑𝐀 🐼*
+╚═══════════════════╝
+╔═══════════════════╗
+╠ 🚬 *𝐎𝐰𝐧𝐞𝐫 𝐍𝐮𝐦𝐛𝐞𝐫 0767233346*
+╚═══════════════════╝
 
-〔 🐼 CYBER PANDA MD COMMANDS 🐼 〕
+🐼 𝘾𝙔𝘽𝙀𝙍 𝙋𝘼𝙉𝘿𝘼 𝙈𝘿 𝙑.10 🐼
 
-╠═ 🌐 GENERAL 🌍 
-║ ➤ 📜 .help / .menu
-║ ➤ ⚡ .ping / ❤️ .alive
-║ ➤ 🔊 .tts <text> / 👑 .owner
-║ ➤ 😂 .joke / 💬 .quote / 🧠 .fact
-║ ➤ 🌦️ .weather / 📰 .news
-║ ➤ 🎨 .attp / 🎵 .lyrics
-║ ➤ 🎱 .8ball / 👥 .groupinfo
-║ ➤ 🛡️ .admins / .staff
-║ ➤ 🔍 .vv / 🆔 .jid / 🔗 .url
-║ ➤ 🌍 .trt / 📸 .ss
-╠════════════════════╣
-║
-╠═ 👮 ADMIN 🛡️ 
-║
-║ ➤ 🚫 .ban / 👢 .kick
-║ ➤ ⬆️ .promote / ⬇️ .demote
-║ ➤ 🔇 .mute / 🔊 .unmute
-║ ➤ ⚠️ .warn / 📊 .warnings
-║ ➤ ❌ .delete / .del
-║ ➤ 🔗 .antilink / 🤬 .antibadword
-║ ➤ 🧹 .clear / ♻️ .resetlink
-║ ➤ 📢 .tag / 📣 .tagall / 🕵️ .hidetag
-║ ➤ 🚷 .tagnotadmin
-║ ➤ 🤖 .chatbot / 🚫 .antitag
-║ ➤ 👋 .welcome / 👋 .goodbye
-║ ➤ 📝 .setgname / 📄 .setgdesc
-║ ➤ 🖼️ .setgpp
-╠══════════════════╣
-║
-╠═ 🔒 OWNER 👑 
-║
-║ ➤ 🌍 .mode
-║ ➤ 🔄 .update / ⚙️ .settings
-║ ➤ 🧹 .clearsession / 🗑️ .cleartmp
-║ ➤ 👁️ .antidelete
-║ ➤ ❤️ .autoreact / 📡 .autostatus
-║ ➤ ⌨️ .autotyping / 📖 .autoread
-║ ➤ 📵 .anticall / 🚫 .pmblocker
-║ ➤ 🖼️ .setpp / 🏷️ .setmention
-║ ➤ 🔔 .mention
-╠═════════════════╣
-║
-╠═ 🎨 MEDIA 🖌️
-║
-║ ➤ 🧩 .sticker / 🖼️ .simage
-║ ➤ 🌫️ .blur / ✂️ .crop
-║ ➤ 🧼 .removebg / ✨ .remini
-║ ➤ 😂 .meme / 📦 .tgsticker
-║ ➤ 🎁 .take
-║ ➤ 😍 .emojimix
-║ ➤ 📸 .igs / 📥 .igsc
-╠═════════════════╣
-║
-╠═ 🖼 PICS 📷 
-║
-║ ➤ 🌍 .pies
-║ ➤ 🇨🇳 .china / 🇯🇵 .japan
-║ ➤ 🇰🇷 .korea / 🇮🇩 .indonesia
-║ ➤ 🧕 .hijab
-╠═════════════════╣
-║
-╠═ 🎮 GAMES 🕹️
-║ 
-║ ➤ ❌⭕ .tictactoe
-║ ➤ 🪢 .hangman / 🔤 .guess
-║ ➤ ❓ .trivia / 💡 .answer
-║ ➤ 😈 .truth / 😏 .dare
-╠═════════════════╣
-║
-╠═ 🤖 AI 🧠 
-║
-║ ➤ 💬 .gpt / 🔮 .gemini
-║ ➤ 🎨 .imagine
-║ ➤ ⚡ .flux / 🎥 .sora
-╠═════════════════╣
-║
-╠═ 🎯 FUN 🎉 
-║
-║ ➤ 😊 .compliment / 😒 .insult
-║ ➤ ❤️ .flirt / ✍️ .shayari
-║ ➤ 🌙 .goodnight / 🌹 .roseday
-║ ➤ 🎭 .character / 💀 .wasted
-║ ➤ 💞 .ship / 🥺 .simp / 🤪 .stupid
-╠═════════════════╣
-║
-╠═ 🔤 TEXT MAKER ✨ 
-║
-║ ➤ 🔩 .metallic / ❄️ .ice / 🌨️ .snow
-║ ➤ 💎 .impressive / 🖥️ .matrix
-║ ➤ 💡 .light / 🌈 .neon / 😈 .devil
-║ ➤ 💜 .purple / ⚡ .thunder
-║ ➤ 🍃 .leaves / 🎖️ .1917 / 🏟️ .arena
-║ ➤ 💻 .hacker / 🏖️ .sand
-║ ➤ 💖 .blackpink / 👾 .glitch / 🔥 .fire
-╠════════════════╣
-║
-╠═ 📥 DOWNLOADER ⬇️ 
-║
-║ ➤ 🎵 .play / 🎶 .song / 🎧 .spotify
-║ ➤ 📸 .instagram / 📘 .facebook
-║ ➤ 🎬 .tiktok / 📹 .video
-║ ➤ ⬇️ .ytmp4
-╠════════════════╣
-║
-╠═ 🧩 MISC 🧠 
-║
-║ ➤ ❤️ .heart / 🔵 .circle / 🏳️‍🌈 .lgbt
-║ ➤ 🚔 .lolice / 🪪 .namecard
-║ ➤ 🐦 .tweet / 💬 .ytcomment
-║ ➤ ☭ .comrade / 🧊 .glass
-║ ➤ 🔒 .jail / ✅ .passed / ⚡ .triggered
-╠════════════════╣
-║
-╠═ 🖼 ANIME 🎌 
-║
-║ ➤ 😋 .nom / 👉 .poke / 😭 .cry
-║ ➤ 😘 .kiss / 🤗 .pat / 🤍 .hug
-║ ➤ 😉 .wink / 🤦 .facepalm
-╠════════════════╣
-║
-╠═ 💻 GITHUB 🌐 
-║
-║ ➤ 🧑‍💻 .git / 🐙 .github
-║ ➤ 📂 .sc / 📜 .script / 📁 .repo
-╚════════════════╝`;
+╔═════════════
+╠ *𝐆𝐞𝐧𝐞𝐫𝐚𝐥 𝐂𝐨𝐦𝐦𝐚𝐧𝐝𝐬*
+╚═════════════
+╔═════════════
+╠ ⛃ .ʜᴇʟᴘ
+╠ ⛃ .ᴍᴇɴᴜ
+╠ ⛃ .ᴘɪɴɢ
+╠ ⛃ .ᴀʟɪᴠᴇ
+╠ ⛃ .ᴛᴛꜱ
+╠ ⛃ .ᴏᴡɴᴇʀ
+╠ ⛃ .ᴡᴇᴀᴛʜᴇʀ
+╠ ⛃ .ɴᴇᴡꜱ
+╠ ⛃ .ᴀᴘᴘ
+╠ ⛃ .ᴛʀᴛ
+╠ ⛃ .ꜱꜱ
+╠ ⛃ .ᴜʀʟ
+╚════════════ 
+
+╔════════════
+╠ 🐼 *𝐀𝐝𝐦𝐢𝐧𝐠 𝐂𝐨𝐦𝐦𝐚𝐧𝐝𝐬* 🐼
+╚════════════
+╠ ⛃ .ᴋɪᴄᴋ @user
+╠ ⛃ .ᴛᴀɢᴀʟʟ
+╠ ⛃ .ʀᴇꜱᴇᴛʟɪɴᴋ
+╠ ⛃ .ᴀɴᴛɪᴛᴀɢ
+╠ ⛃ .ᴡᴇʟᴄᴏᴍᴇ
+╠ ⛃ .ɢᴏᴏᴅʙʏᴇ
+╠ ⛃ .ꜱᴇᴛɢᴅᴇꜱᴄ
+╠ ⛃ .ꜱᴇᴛɢɴᴀᴍᴇ
+╠ ⛃ .ꜱᴇᴛɢᴘᴘ
+╚════════════
+
+╔════════════
+╠ 🐼 *𝐈𝐦𝐚𝐠𝐞 𝐂𝐨𝐦𝐦𝐚𝐧𝐝𝐬* 🐼
+╠════════════
+╠ 🐼 *𝐒𝐭𝐢𝐜𝐤𝐞𝐫 𝐂𝐨𝐦𝐦𝐚𝐧𝐝𝐬* 🐼
+╚════════════
+╠ ⛃ .ʙʟᴜʀ
+╠ ⛃ .ꜱɪᴍᴀɢᴇ
+╠ ⛃ .ꜱᴛɪᴄᴋᴇʀ
+╠ ⛃ .ʀᴇᴍᴏᴠᴇʙɢ
+╠ ⛃ .ᴛɢꜱᴛɪᴄᴋᴇʀ
+╠ ⛃ .ᴇᴍᴏᴊɪᴍɪx
+╠ ⛃ .ɪɢꜱ
+╠ ⛃ .ɪɢꜱᴄ
+╚════════════  
+
+╔════════════
+╠ 🐼 *𝐀𝐈 𝐂𝐨𝐦𝐦𝐚𝐧𝐝𝐬* 🐼
+╚════════════
+╠ ⛃ .ɢᴘᴛ <question>
+╠ ⛃ .ɢɪᴍɪɴɪ <question>
+╚════════════
+
+╔════════════
+╠ 🐼 *𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐞𝐫* 🐼
+╚════════════
+╠ ⛃ .ᴘʟᴀʏ
+╠ ⛃ .ꜱᴏɴɢ
+╠ ⛃ .ꜱᴘᴏᴛɪꜰʏ
+╠ ⛃ .ꜰᴀᴄᴇʙᴏᴏᴋ
+╠ ⛃ .ᴛɪᴋᴛᴏᴋ
+╠ ⛃ .ᴠɪᴅᴇᴏ
+╠ ⛃ .ʏᴛᴍᴘ4 
+╚════════════
+
+╔════════════
+╠ 🐼 *𝐆𝐢𝐭𝐡𝐮𝐛 𝐂𝐨𝐦𝐦𝐚𝐧𝐝𝐬* 🐼
+╚════════════
+╠ ⛃ .ɢɪᴛ
+╠ ⛃ .ɢɪᴛʜᴜʙ
+╠ ⛃ .ꜱᴄ
+╠ ⛃ .ꜱᴄʀɪᴘᴛ
+╠ ⛃ .ʀᴇᴘᴏ
+╚════════════`;
 
     try {
         const imagePath = path.join(__dirname, '../assets/bot_image.jpg');
